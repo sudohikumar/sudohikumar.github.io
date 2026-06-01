@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Himanshu Kumar | Senior Platform Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: '#0b0b0c',
+                        charcoal: '#121214',
+                        mutedGray: '#1a1a1c',
+                        borderZinc: '#222225',
+                        accentGreen: '#10b981',
+                        customWhite: '#f4f4f5'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0b0c;
+            color: #f4f4f5;
+        }
+        .arch-container {
+            border-radius: 120px 120px 0 0;
+        }
+        /* Custom scrollbar to keep layout premium */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0b0c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #222225;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #10b981;
+        }
+    </style>
+</head>
+<body class="px-6 md:px-12 lg:px-24 py-8 selection:bg-accentGreen selection:text-obsidian">
+
+    <!-- HEADER NAVIGATION -->
+    <header class="flex justify-between items-center max-w-7xl mx-auto mb-12">
+        <div class="flex items-center space-x-2 tracking-widest font-bold text-sm uppercase">
+            <span class="text-accentGreen animate-pulse">●</span>
+            <span>HIMANSHU KUMAR</span>
+        </div>
+        <div class="flex items-center space-x-4">
+            <a href="mailto:himanshu.kumar133@gmail.com" class="text-xs text-zinc-400 hover:text-accentGreen transition hidden sm:inline-block font-mono">himanshu.kumar133@gmail.com</a>
+            <div class="bg-charcoal border border-borderZinc text-[10px] text-zinc-400 font-mono tracking-wider uppercase px-3 py-1.5 rounded-full">
+                Platform Status: Active
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto">
+
+        <!-- HERO SECTION (3-Column Layout optimized from image_f0dfa0.jpg) -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center mb-16">
+            
+            <!-- Left Column: Primary Hook -->
+            <div class="lg:col-span-5 space-y-6">
+                <span class="text-xs uppercase tracking-widest text-emerald-500 font-mono block">Senior Platform Engineer</span>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-none text-customWhite">
+                    A CLOUD <br><span class="font-bold text-accentGreen">INFRASTRUCTURE</span> EXPERT
+                </h1>
+                <p class="text-zinc-400 text-sm leading-relaxed max-w-md">
+                    Over 8 years of experience building cost-efficient, high-performance distributed systems on AWS and GCP, specializing in Kubernetes orchestration, autoscaling engineering, and modern infrastructure automation.
+                </p>
+                <div class="flex flex-wrap gap-3 pt-2">
+                    <a href="mailto:himanshu.kumar133@gmail.com" class="inline-flex items-center space-x-3 bg-customWhite text-obsidian px-5 py-3 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-accentGreen hover:text-obsidian transition-all duration-300 transform hover:-translate-y-0.5">
+                        <span>Contact Me</span>
+                    </a>
+                    <a href="https://linkedin.com/in/himanshu-kumar-57864195" target="_blank" class="border border-borderZinc bg-charcoal hover:border-zinc-600 px-5 py-3 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 text-zinc-300 hover:text-customWhite">
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+
+            <!-- Center Column: Visual Graphic Frame with Live Canvas Simulation -->
+            <div class="lg:col-span-4 flex justify-center">
+                <div class="arch-container w-full max-w-[300px] aspect-[4/5] bg-gradient-to-b from-zinc-900 to-charcoal border border-borderZinc overflow-hidden flex flex-col justify-end p-6 relative group">
+                    <!-- Interactive Simulation Canvas -->
+                    <canvas id="clusterCanvas" class="absolute inset-0 w-full h-full block z-0"></canvas>
+                    
+                    <div class="absolute inset-x-0 top-6 text-center z-10 pointer-events-none">
+                        <span class="text-[9px] font-mono uppercase bg-obsidian/80 text-accentGreen px-2.5 py-1 rounded-full border border-borderZinc tracking-widest">
+                            Live Node Simulation
+                        </span>
+                    </div>
+
+                    <!-- Interactive Trigger Controls Overlay -->
+                    <div class="z-10 text-center space-y-2 bg-obsidian/90 p-4 rounded-xl border border-borderZinc backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                        <div class="flex justify-around items-center">
+                            <button id="addPodBtn" class="text-[9px] font-mono text-accentGreen border border-accentGreen/30 hover:border-accentGreen px-2 py-1 rounded bg-accentGreen/10 transition-colors uppercase">
+                                + Pod
+                            </button>
+                            <button id="chaosBtn" class="text-[9px] font-mono text-red-500 border border-red-500/30 hover:border-red-500 px-2 py-1 rounded bg-red-500/10 transition-colors uppercase">
+                                Chaos
+                            </button>
+                        </div>
+                        <div>
+                            <p class="text-[9px] uppercase tracking-widest text-zinc-500 font-mono">Current Location</p>
+                            <p class="text-xs font-semibold text-customWhite font-mono">Dublin, Ireland</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Micro Metrics -->
+            <div class="lg:col-span-3 grid grid-cols-2 lg:grid-cols-1 gap-6 text-right">
+                <div class="p-4 bg-charcoal/50 border border-borderZinc rounded-lg">
+                    <h3 class="text-3xl font-light text-customWhite font-mono">8+</h3>
+                    <span class="text-[9px] block text-zinc-500 uppercase tracking-widest mt-1 font-mono">Years Experience</span>
+                </div>
+                <div class="p-4 bg-charcoal/50 border border-borderZinc rounded-lg">
+                    <h3 class="text-3xl font-light text-customWhite font-mono">CKAD</h3>
+                    <span class="text-[9px] block text-zinc-500 uppercase tracking-widest mt-1 font-mono">Certified Kubernetes Application Developer</span>
+                </div>
+                <div class="p-4 bg-charcoal/50 border border-borderZinc rounded-lg">
+                    <h3 class="text-3xl font-light text-customWhite font-mono">GCP</h3>
+                    <span class="text-[9px] block text-zinc-500 uppercase tracking-widest mt-1 font-mono">Associate Cloud Engineer</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- TRUSTED BY LOGO GRID (Companies from Himanshu-Kumar-FlowCV.pdf) -->
+        <section class="mb-10">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-4">
+                <h3 class="text-[10px] font-bold uppercase tracking-widest text-zinc-500 font-mono">Professional History & Footprint</h3>
+                <p class="text-[10px] text-zinc-600 font-mono mt-1 md:mt-0">Orchestrating high availability systems across enterprise cloud landscapes</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-5 border border-borderZinc bg-charcoal rounded-sm text-center">
+                <div class="p-5 border-r border-b md:border-b-0 border-borderZinc text-zinc-400 font-medium text-xs tracking-widest uppercase hover:text-accentGreen transition-colors">Workday</div>
+                <div class="p-5 border-r border-b md:border-b-0 border-borderZinc text-zinc-400 font-medium text-xs tracking-widest uppercase hover:text-accentGreen transition-colors">Couchbase</div>
+                <div class="p-5 border-r border-b md:border-b-0 border-borderZinc text-zinc-400 font-medium text-xs tracking-widest uppercase hover:text-accentGreen transition-colors">Target India</div>
+                <div class="p-5 border-r border-borderZinc text-zinc-400 font-medium text-xs tracking-widest uppercase hover:text-accentGreen transition-colors">Lowe's India</div>
+                <div class="p-5 text-zinc-400 font-medium text-xs tracking-widest uppercase hover:text-accentGreen transition-colors">AppViewX</div>
+            </div>
+        </section>
+
+        <!-- CORE PILLARS / HIGHLIGHTED CAPABILITIES (Tightened Spacing) -->
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 border-t border-borderZinc pt-6">
+            <div class="space-y-1">
+                <h4 class="text-[10px] font-bold uppercase tracking-widest text-customWhite font-mono">Programming Languages</h4>
+                <p class="text-zinc-500 text-xs font-mono">Golang, Python</p>
+            </div>
+            <div class="space-y-1">
+                <h4 class="text-[10px] font-bold uppercase tracking-widest text-customWhite font-mono">Cloud Infrastructure</h4>
+                <p class="text-zinc-500 text-xs font-mono">AWS, GCP, Kubernetes, EKS, GKE</p>
+            </div>
+            <div class="space-y-1">
+                <h4 class="text-[10px] font-bold uppercase tracking-widest text-customWhite font-mono">Infrastructure as Code</h4>
+                <p class="text-zinc-500 text-xs font-mono">Terraform, ACK, Config Connector</p>
+            </div>
+            <div class="space-y-1">
+                <h4 class="text-[10px] font-bold uppercase tracking-widest text-customWhite font-mono">CI/CD & Observability</h4>
+                <p class="text-zinc-500 text-xs font-mono">Prometheus, Grafana, ArgoCD, GitOps</p>
+            </div>
+        </section>
+
+        <!-- THE PROFILE PHILOSOPHY (Tightened transition) -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 border-t border-borderZinc/50 pt-8">
+            <div class="lg:col-span-5">
+                <h2 class="text-xl md:text-2xl font-light tracking-tight text-customWhite uppercase leading-snug">
+                    Architecting Cost-Efficient <br><span class="font-bold">Distributed Systems</span>
+                </h2>
+            </div>
+            <div class="lg:col-span-7 text-zinc-400 text-xs md:text-sm leading-relaxed">
+                <p>
+                    A Senior Platform Engineer specialized in cloud architecture, infrastructure management, and FinOps metrics. Proven expert in designing frameworks that provide self-service capabilities for software application developers while guaranteeing resilience, adherence to compliance, and fine-tuned runtime orchestration.
+                </p>
+            </div>
+        </section>
+
+        <!-- COMPREHENSIVE SKILLS MATRIX SECTION (Tightened gap to improve page flow) -->
+        <section class="mb-16">
+            <div class="flex justify-between items-baseline mb-6 border-b border-borderZinc pb-3">
+                <h3 class="text-xs font-bold uppercase tracking-widest text-customWhite font-mono">Technical Skills Matrix</h3>
+                <span class="text-[10px] text-zinc-500 font-mono">Expert Competency</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="p-4 bg-charcoal border border-borderZinc rounded-md hover:border-zinc-700 transition">
+                    <p class="text-[9px] text-accentGreen uppercase font-mono tracking-wider mb-1.5">Languages & Core</p>
+                    <p class="text-xs text-zinc-300 font-medium">Golang, Python</p>
+                </div>
+                <div class="p-4 bg-charcoal border border-borderZinc rounded-md hover:border-zinc-700 transition">
+                    <p class="text-[9px] text-accentGreen uppercase font-mono tracking-wider mb-1.5">Cloud Platforms</p>
+                    <p class="text-xs text-zinc-300 font-medium">Google Cloud Platform (GCP), Amazon Web Services (AWS)</p>
+                </div>
+                <div class="p-4 bg-charcoal border border-borderZinc rounded-md hover:border-zinc-700 transition">
+                    <p class="text-[9px] text-accentGreen uppercase font-mono tracking-wider mb-1.5">Orchestration & Containers</p>
+                    <p class="text-xs text-zinc-300 font-medium">Kubernetes, Docker, EKS, GKE, Temporal</p>
+                </div>
+                <div class="p-4 bg-charcoal border border-borderZinc rounded-md hover:border-zinc-700 transition">
+                    <p class="text-[9px] text-accentGreen uppercase font-mono tracking-wider mb-1.5">Infrastructure as Code (IaC)</p>
+                    <p class="text-xs text-zinc-300 font-medium">Terraform, AWS ACK, GCP Config Connector, Cuelang</p>
+                </div>
+                <div class="p-4 bg-charcoal border border-borderZinc rounded-md hover:border-zinc-700 transition">
+                    <p class="text-[9px] text-accentGreen uppercase font-mono tracking-wider mb-1.5">CI/CD & Release DevOps</p>
+                    <p class="text-xs text-zinc-300 font-medium">Jenkins, ArgoCD, Spinnaker, GitOps, Release Orchestration</p>
+                </div>
+                <div class="p-4 bg-charcoal border border-borderZinc rounded-md hover:border-zinc-700 transition">
+                    <p class="text-[9px] text-accentGreen uppercase font-mono tracking-wider mb-1.5">Distributed Tooling & Mesh</p>
+                    <p class="text-xs text-zinc-300 font-medium">Prometheus, Grafana, Vault, Consul, Istio, EFK Stack</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FULL PROFESSIONAL EXPERIENCE TIMELINE -->
+        <section class="mb-24">
+            <div class="flex justify-between items-baseline mb-10 border-b border-borderZinc pb-3">
+                <h3 class="text-xs font-bold uppercase tracking-widest text-customWhite font-mono">Professional History</h3>
+                <span class="text-[10px] text-zinc-500 font-mono">Chronological Footprint</span>
+            </div>
+
+            <div class="space-y-12">
+                <!-- Role 1: Workday -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12">
+                    <div class="lg:col-span-4 space-y-1">
+                        <span class="text-xs text-accentGreen font-mono font-medium">09/2022 – Present</span>
+                        <h4 class="text-base font-bold text-customWhite">Senior Software Engineer</h4>
+                        <p class="text-xs text-zinc-500 uppercase tracking-wider font-mono">Workday | Dublin, Ireland</p>
+                    </div>
+                    <div class="lg:col-span-8">
+                        <ul class="space-y-2 text-zinc-400 text-xs leading-relaxed list-disc list-inside">
+                            <li>Led key initiatives within the Scylla Cloud Platform to design and implement robust AWS and GCP infrastructure, developing cloud components that prioritized reliability, stability, and scalable application architectures.</li>
+                            <li>Designed framework and developed orchestration to deploy services on GCP and AWS using KRM model (ACK and Config Connector). Contributed to the creation of features providing self-service capabilities for application teams.</li>
+                            <li>Led AL2023 migrations for AWS EKS Clusters, collaborating with service teams and stakeholders to ensure an efficient and smooth rollout, which involved significant team building and knowledge sharing.</li>
+                            <li>Contributed to orchestration of release processes using Temporal, enhancing continuous deployment capabilities.</li>
+                            <li>Contributed to IL4 / EUSov cloud initiative to use existing tooling and dynamically provision resources as per compliance norms of the respective infra, showcasing adaptability to industry trends and cloud application development.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Role 2: Couchbase -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 pt-6 border-t border-borderZinc">
+                    <div class="lg:col-span-4 space-y-1">
+                        <span class="text-xs text-accentGreen font-mono font-medium">05/2021 – 09/2022</span>
+                        <h4 class="text-base font-bold text-customWhite">Senior Software Engineer</h4>
+                        <p class="text-xs text-zinc-500 uppercase tracking-wider font-mono">Couchbase | Bengaluru, India</p>
+                    </div>
+                    <div class="lg:col-span-8">
+                        <ul class="space-y-2 text-zinc-400 text-xs leading-relaxed list-disc list-inside">
+                            <li>Developed and maintained a comprehensive monitoring and alerting solution/ framework for Couchbase on the cloud, including the use of Prometheus and Grafana data.</li>
+                            <li>Designed and implemented a framework for simulating metrics to evaluate the performance of clusters and the backend pipeline, contributing to robust application architectures.</li>
+                            <li>Established a subscription framework for promptly alerting customers about critical or warning events in their clusters.</li>
+                            <li>Created a framework to generate and send graphs from Prometheus and Grafana data, along with incorporating alerts.</li>
+                            <li>Architected Capella on GCP to efficiently, cost-effectively, and securely deploy Couchbase clusters with logging, monitoring, and alerting capabilities in place, demonstrating strong cloud application and cloud services expertise.</li>
+                            <li>Engineered highly resilient distributed systems, known as App Services, on GCP, leveraging technologies for complex application architectures.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Role 3: Target India -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 pt-6 border-t border-borderZinc">
+                    <div class="lg:col-span-4 space-y-1">
+                        <span class="text-xs text-accentGreen font-mono font-medium">01/2020 – 06/2021</span>
+                        <h4 class="text-base font-bold text-customWhite">Software Engineer</h4>
+                        <p class="text-xs text-zinc-500 uppercase tracking-wider font-mono">Target India | Bengaluru, India</p>
+                    </div>
+                    <div class="lg:col-span-8">
+                        <ul class="space-y-2 text-zinc-400 text-xs leading-relaxed list-disc list-inside">
+                            <li>Part of the Target Application Platform Team, delivering a self-service platform for workload deployment and management across hybrid cloud environments, including GKE and data centers.</li>
+                            <li>Helped design architecture for high availability workloads on GKE and implemented monitoring systems for resource tracking and alerting based on metrics, contributing to robust application architectures.</li>
+                            <li>Developed multiple microservices and tools to support new deployment strategies and enhance programmability for application teams.</li>
+                            <li>Designed a VM-based platform for non-containerizable applications and created a custom Terraform provider for hybrid infrastructure provisioning, demonstrating ability to leverage technologies for cloud services.</li>
+                            <li>Developed a CLI (similar to kubectl) enabling application teams to build complex workflows for use cases like IAMs and clusters, contributing to technical documentation for user adoption.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Role 4: Lowe's India -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 pt-6 border-t border-borderZinc">
+                    <div class="lg:col-span-4 space-y-1">
+                        <span class="text-xs text-accentGreen font-mono font-medium">06/2017 – 01/2020</span>
+                        <h4 class="text-base font-bold text-customWhite">Software Engineer</h4>
+                        <p class="text-xs text-zinc-500 uppercase tracking-wider font-mono">Lowe's India | Bengaluru, India</p>
+                    </div>
+                    <div class="lg:col-span-8">
+                        <ul class="space-y-2 text-zinc-400 text-xs leading-relaxed list-disc list-inside">
+                            <li>Contributed to the development of a microservices platform on Google Kubernetes Engine using tools like Terraform, Istio, Consul, Vault, EFK. Developed Kubernetes controllers to extend platform functionalities and improve auditing and compliance.</li>
+                            <li>Helped design a system for easy infrastructure provisioning of Databases (Couchbase, Cassandra, etc.) on Google Cloud using automation scripts and Terraform. This streamlined tasks like IAM bindings, vault role creations, consul KV creations, etc., making database provisioning self-service.</li>
+                            <li>Developed microservices for monitoring platform health, connectivity with external services, and latency using Golang and Python.</li>
+                            <li>Co-Developed an Android app to help store associates streamline and manage their daily tasks more efficiently, fostering team building and collaboration.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Role 5: AppViewX -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 pt-6 border-t border-borderZinc">
+                    <div class="lg:col-span-4 space-y-1">
+                        <span class="text-xs text-accentGreen font-mono font-medium">01/2017 – 06/2017</span>
+                        <h4 class="text-base font-bold text-customWhite">Software Engineer</h4>
+                        <p class="text-xs text-zinc-500 uppercase tracking-wider font-mono">AppViewX | Coimbatore, India</p>
+                    </div>
+                    <div class="lg:col-span-8">
+                        <ul class="space-y-2 text-zinc-400 text-xs leading-relaxed list-disc list-inside">
+                            <li>Played a key role in the DevOps and R&D team of a dynamic startup.</li>
+                            <li>Created tools to simplify infrastructure provisioning and automate software testing workflows, leveraging technologies for cloud services.</li>
+                            <li>Developed proof-of-concept integrations with ServiceNow to boost product features and improve customer engagement, contributing to technical documentation for future use.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TECHNICAL PROJECTS BLOCK -->
+        <section class="mb-24">
+            <div class="flex justify-between items-baseline mb-10 border-b border-borderZinc pb-3">
+                <h3 class="text-xs font-bold uppercase tracking-widest text-customWhite font-mono">Engineering Sub-Systems</h3>
+                <span class="text-[10px] text-zinc-500 font-mono font-medium">Personal & Freelance Projects</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Project 1 -->
+                <div class="p-6 bg-charcoal border border-borderZinc rounded-sm group hover:border-zinc-700 transition">
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span class="bg-zinc-800 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-sm uppercase">Django</span>
+                        <span class="bg-zinc-800 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-sm uppercase">Python</span>
+                        <span class="bg-zinc-800 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-sm uppercase">RabbitMQ</span>
+                        <span class="bg-zinc-800 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-sm uppercase">MongoDB</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-customWhite mb-1 group-hover:text-accentGreen transition-colors">Status Checker Tool</h4>
+                    <p class="text-zinc-400 text-xs leading-relaxed">
+                        Designed an independent platform health verification utility utilizing custom configuration timeout and frequency parameters. Employs a decoupled message dispatcher model to continuously paint state tracking layouts via live streaming workbooks.
+                    </p>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="p-6 bg-charcoal border border-borderZinc rounded-sm group hover:border-zinc-700 transition">
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span class="bg-zinc-800 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-sm uppercase">Vue JS</span>
+                        <span class="bg-zinc-800 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-sm uppercase">Python</span>
+                        <span class="bg-zinc-800 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-sm uppercase">Flask</span>
+                        <span class="bg-zinc-800 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-sm uppercase">Java</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-customWhite mb-1 group-hover:text-accentGreen transition-colors">Service Virtualization Tool</h4>
+                    <p class="text-zinc-400 text-xs leading-relaxed">
+                        Directed front-end architectural UI mappings. Designed an interactive abstraction layer mapping structural handshakes to deep runtime instances executing native Docker virtualization configs and highly tailored Wiremock behavior routines.
+                    </p>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="p-6 bg-charcoal border border-borderZinc rounded-sm group hover:border-zinc-700 transition">
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span class="bg-zinc-800 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-sm uppercase">Express JS</span>
+                        <span class="bg-zinc-800 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-sm uppercase">Angular JS</span>
+                        <span class="bg-zinc-800 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-sm uppercase">Firehose</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-customWhite mb-1 group-hover:text-accentGreen transition-colors">Physioheals Platform</h4>
+                    <p class="text-zinc-400 text-xs leading-relaxed">
+                        Engineered a modular discussion environment pairing authenticated resource sharing with complex administrator streaming control pipelines, allowing straightforward publishing and lifecycle organization across dynamic content formats.
+                    </p>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="p-6 bg-charcoal border border-borderZinc rounded-sm group hover:border-zinc-700 transition">
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span class="bg-zinc-800 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-sm uppercase">Python</span>
+                        <span class="bg-zinc-800 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-sm uppercase">Angular JS</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-customWhite mb-1 group-hover:text-accentGreen transition-colors">Server Manager</h4>
+                    <p class="text-zinc-400 text-xs leading-relaxed">
+                        Co-engineered a browser-accessible environment handling core host operations, enabling rapid directory adjustments, file I/O operations, and tracking routines across supported native asset types.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION & CREDENTIALS ROW -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20 border-t border-borderZinc pt-10">
+            <div>
+                <h3 class="text-xs font-bold uppercase tracking-widest text-customWhite mb-6 font-mono">Education</h3>
+                <div class="space-y-1">
+                    <span class="text-xs text-accentGreen font-mono">07/2013 – 07/2017</span>
+                    <h4 class="text-base font-bold text-customWhite">Bachelor in Technology</h4>
+                    <p class="text-xs text-zinc-400">SRM University | Chennai, India</p>
+                    <p class="text-xs text-zinc-500 font-mono mt-1">Cumulative CGPA: 8.7</p>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-xs font-bold uppercase tracking-widest text-customWhite mb-6 font-mono">Industry Certifications</h3>
+                <div class="space-y-4">
+                    <div>
+                        <span class="text-xs text-accentGreen font-mono block">2022</span>
+                        <h4 class="text-sm font-bold text-customWhite">CKAD - Certified Kubernetes Application Developer</h4>
+                        <p class="text-xs text-zinc-500 font-mono">Cloud Native Computing Foundation (CNCF)</p>
+                    </div>
+                    <div>
+                        <span class="text-xs text-accentGreen font-mono block">2020</span>
+                        <h4 class="text-sm font-bold text-customWhite">Google Cloud Associate Cloud Engineer</h4>
+                        <p class="text-xs text-zinc-500 font-mono">Google Credential</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER SIGNATURE -->
+    <footer class="max-w-7xl mx-auto border-t border-borderZinc pt-8 mt-16 flex flex-col sm:flex-row justify-between items-center text-xs text-zinc-600 gap-4">
+        <div class="font-mono">&copy; 2026 Himanshu Kumar | Designed with extreme efficiency.</div>
+        <div class="flex space-x-6 font-mono">
+            <a href="https://linkedin.com/in/himanshu-kumar-57864195" target="_blank" class="hover:text-accentGreen transition-colors">LinkedIn</a>
+            <a href="https://github.com/sudohikumar" target="_blank" class="hover:text-accentGreen transition-colors">GitHub</a>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE CLUSTER CANVAS SCRIPT -->
+    <script>
+        const canvas = document.getElementById('clusterCanvas');
+        const ctx = canvas.getContext('2d');
+        let pods = [];
+        let packets = [];
+        let simulationSpeed = 1;
+        let scaleFactor = 1;
+
+        // Synchronize Canvas coordinates on initialization & window scaling
+        function resizeCanvas() {
+            const rect = canvas.parentNode.getBoundingClientRect();
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+            scaleFactor = rect.width / 300;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        // Node / Pod Template
+        class Pod {
+            constructor(x, y, label, isLB = false) {
+                this.x = x;
+                this.y = y;
+                this.originalY = y;
+                this.label = label;
+                this.isLB = isLB;
+                this.radius = isLB ? 18 : 12;
+                this.health = 100;
+                this.pulse = 0;
+            }
+
+            draw() {
+                this.pulse += 0.05;
+                ctx.beginPath();
+                
+                // Outer breathing node glow ring
+                let glowRad = this.radius + Math.sin(this.pulse) * 4;
+                ctx.arc(this.x, this.y, glowRad, 0, Math.PI * 2);
+                
+                if (this.health < 50) {
+                    ctx.strokeStyle = 'rgba(239, 68, 68, 0.25)';
+                    ctx.fillStyle = 'rgba(239, 68, 68, 0.08)';
+                } else {
+                    ctx.strokeStyle = this.isLB ? 'rgba(16, 185, 129, 0.25)' : 'rgba(16, 185, 129, 0.15)';
+                    ctx.fillStyle = this.isLB ? 'rgba(16, 185, 129, 0.05)' : 'rgba(16, 185, 129, 0.02)';
+                }
+                ctx.fill();
+                ctx.stroke();
+
+                // Core Node Fill
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                if (this.health < 50) {
+                    ctx.fillStyle = '#ef4444'; // Alarm Node State
+                } else {
+                    ctx.fillStyle = this.isLB ? '#047857' : '#10b981';
+                }
+                ctx.fill();
+
+                // Node identifier text overlay
+                ctx.fillStyle = '#ffffff';
+                ctx.font = '7px monospace';
+                ctx.textAlign = 'center';
+                ctx.fillText(this.label, this.x, this.y + (this.radius + 12));
+            }
+
+            update() {
+                // Gentle floating suspension simulation
+                if (!this.isLB) {
+                    this.y = this.originalY + Math.sin(this.pulse) * 2;
+                }
+            }
+        }
+
+        // Data / Traffic Packet Template
+        class Packet {
+            constructor(startX, startY, targetPod) {
+                this.x = startX;
+                this.y = startY;
+                this.target = targetPod;
+                this.speed = 1.8 + Math.random() * 1.5;
+                this.complete = false;
+            }
+
+            update() {
+                let dx = this.target.x - this.x;
+                let dy = this.target.y - this.y;
+                let dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < 4) {
+                    this.complete = true;
+                    // Trigger pod pulse on structural traffic strike
+                    this.target.pulse = 1;
+                } else {
+                    this.x += (dx / dist) * this.speed * simulationSpeed;
+                    this.y += (dy / dist) * this.speed * simulationSpeed;
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+                ctx.fillStyle = '#34d399';
+                ctx.shadowBlur = 4;
+                ctx.shadowColor = '#10b981';
+                ctx.fill();
+                ctx.shadowBlur = 0; // Reset canvas shadows
+            }
+        }
+
+        // Initial Grid Assembly Mapping
+        function initCluster() {
+            pods = [];
+            packets = [];
+            
+            // Core Load Balancer
+            pods.push(new Pod(canvas.width / 2, 50, 'Load Balancer', true));
+            
+            // Standard target worker application pods
+            let podCount = 3;
+            for (let i = 0; i < podCount; i++) {
+                let spacing = canvas.width / (podCount + 1);
+                pods.push(new Pod(spacing * (i + 1), canvas.height - 120, `Pod-Web-${i + 1}`));
+            }
+        }
+
+        // Action Loop Executor
+        function updateSimulation() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            let lb = pods[0];
+            
+            // Query ready / healthy workers (health >= 50%)
+            let healthyPods = pods.slice(1).filter(pod => pod.health >= 50);
+            let totalOutage = (pods.length > 1 && healthyPods.length === 0);
+
+            // Draw structural architecture network backbones with real-time health evaluations
+            pods.forEach((pod, idx) => {
+                if (idx === 0) return; // Skip LB self-connection
+                
+                ctx.beginPath();
+                ctx.moveTo(lb.x, lb.y);
+                ctx.lineTo(pod.x, pod.y);
+                
+                if (pod.health < 50) {
+                    // Failed state - Red dashed connection line
+                    ctx.strokeStyle = 'rgba(239, 68, 68, 0.35)';
+                    ctx.setLineDash([4, 4]);
+                } else {
+                    // Operational state - Soft solid green line
+                    ctx.strokeStyle = 'rgba(16, 185, 129, 0.15)';
+                    ctx.setLineDash([]);
+                }
+                ctx.stroke();
+            });
+            ctx.setLineDash([]); // Reset line dash style for upcoming frames
+
+            // Render and update individual node states
+            pods.forEach(pod => {
+                pod.update();
+                pod.draw();
+            });
+
+            // Handle active traffic execution pipelines
+            if (!totalOutage) {
+                // Only dispatch packets to healthy, ready endpoints (Envoy/Kubernetes routing match)
+                if (Math.random() < 0.05 && healthyPods.length > 0) {
+                    let targetPod = healthyPods[Math.floor(Math.random() * healthyPods.length)];
+                    packets.push(new Packet(lb.x, lb.y, targetPod));
+                }
+            } else {
+                // Draw floating alerts if all nodes are compromised (Outage State)
+                ctx.fillStyle = 'rgba(239, 68, 68, 0.9)';
+                ctx.font = '8px monospace';
+                ctx.textAlign = 'center';
+                ctx.fillText('CRITICAL: ALL ENDPOINTS DOWN', canvas.width / 2, canvas.height / 2 - 10);
+                ctx.fillStyle = 'rgba(239, 68, 68, 0.5)';
+                ctx.fillText('CIRCUIT BREAKER ACTIVE', canvas.width / 2, canvas.height / 2 + 2);
+            }
+
+            // Update running packets
+            packets.forEach((packet, idx) => {
+                packet.update();
+                packet.draw();
+                
+                // If a packet's target pod becomes unhealthy in flight, drop it (Simulating 503 Bad Gateway)
+                if (packet.target.health < 50) {
+                    packet.complete = true;
+                }
+                
+                if (packet.complete) {
+                    packets.splice(idx, 1);
+                }
+            });
+
+            // Self-Healing orchestration loop (FinOps/KRM auto-recovery)
+            pods.forEach(pod => {
+                if (pod.health < 100) {
+                    pod.health += 0.3; // Self-healing recovery over time
+                }
+            });
+
+            requestAnimationFrame(updateSimulation);
+        }
+
+        // Add Pod Command Execution
+        document.getElementById('addPodBtn').addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (pods.length < 6) {
+                let newIndex = pods.length;
+                let targetY = canvas.height - 120;
+                let newX = Math.random() * (canvas.width - 60) + 30;
+                
+                pods.push(new Pod(newX, targetY, `Pod-Auto-${newIndex}`));
+                
+                // Recalculate horizontal positioning layouts cleanly
+                let podCount = pods.length - 1;
+                for (let i = 1; i < pods.length; i++) {
+                    let spacing = canvas.width / (podCount + 1);
+                    pods[i].x = spacing * i;
+                    pods[i].originalY = targetY;
+                }
+            }
+        });
+
+        // Trigger Chaos Monkey System Disruptions
+        document.getElementById('chaosBtn').addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (pods.length > 1) {
+                let targetIdx = 1 + Math.floor(Math.random() * (pods.length - 1));
+                pods[targetIdx].health = 10; // Instantly compromise target server instance health metrics
+            }
+        });
+
+        // Bootstrap engine once elements load inside viewport
+        window.onload = function() {
+            initCluster();
+            updateSimulation();
+        }
+    </script>
+</body>
+</html>
