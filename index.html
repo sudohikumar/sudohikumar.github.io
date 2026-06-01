@@ -11,109 +11,161 @@
             theme: {
                 extend: {
                     colors: {
-                        obsidian: '#0b0b0c',
-                        charcoal: '#121214',
-                        mutedGray: '#1a1a1c',
-                        borderZinc: '#222225',
-                        accentGreen: '#10b981',
-                        customWhite: '#f4f4f5'
+                        appleDark: '#010102', // Space Black
+                        appleGlass: 'rgba(20, 20, 25, 0.45)', // Translucent backdrop
+                        appleBorder: 'rgba(255, 255, 255, 0.08)', // Thin crisp specularity
+                        appleBorderActive: 'rgba(255, 255, 255, 0.2)',
+                        appleBlue: '#2997ff', // Liquid Blue
+                        appleGreen: '#30d158', // Liquid Green
+                        appleRed: '#ff453a', // Liquid Red
+                        applePurple: '#af52de', // Liquid Purple
+                        customWhite: '#f5f5f7' // Soft Apple White
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['SF Pro Display', '-apple-system', 'BlinkMacSystemFont', 'Inter', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0b0b0c;
-            color: #f4f4f5;
+            background-color: #010102;
+            color: #f5f5f7;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(41, 151, 255, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(175, 82, 222, 0.08) 0%, transparent 40%);
+            background-attachment: fixed;
+            -webkit-font-smoothing: antialiased;
         }
-        .arch-container {
-            border-radius: 120px 120px 0 0;
+        
+        /* High-fidelity Frosted Liquid Glass panel */
+        .glass-panel {
+            background: rgba(18, 18, 22, 0.55);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        /* Custom scrollbar to keep layout premium */
+        
+        .glass-panel:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45), 0 0 15px rgba(41, 151, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Glassmorphic Chips and Tags */
+        .glass-chip {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(8px);
+            border-radius: 9999px;
+            transition: all 0.2s ease;
+        }
+        .glass-chip:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        /* Liquid Capsule Mask */
+        .liquid-capsule {
+            border-radius: 160px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0) 80%);
+            box-shadow: inset 0 20px 40px rgba(255, 255, 255, 0.03), 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Apple-style smooth scrollbar */
         ::-webkit-scrollbar {
-            width: 6px;
+            width: 8px;
+            height: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #0b0b0c;
+            background: rgba(0, 0, 0, 0);
         }
         ::-webkit-scrollbar-thumb {
-            background: #222225;
-            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 9999px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #10b981;
+            background: rgba(255, 255, 255, 0.24);
         }
     </style>
 </head>
-<body class="px-6 md:px-12 lg:px-24 py-8 selection:bg-accentGreen selection:text-obsidian">
+<body class="px-6 md:px-12 lg:px-24 py-8 selection:bg-appleBlue selection:text-customWhite">
 
-    <!-- HEADER NAVIGATION -->
-    <header class="flex justify-between items-center max-w-7xl mx-auto mb-12">
-        <div class="flex items-center space-x-2 tracking-widest font-bold text-sm uppercase">
-            <span class="text-accentGreen animate-pulse">●</span>
-            <span>HIMANSHU KUMAR</span>
+    <!-- FLOATING BACKGROUND GLOWS (Liquid Light Mesh) -->
+    <div class="fixed top-1/4 left-1/3 w-[350px] h-[350px] bg-appleBlue/10 rounded-full blur-[120px] pointer-events-none -z-10 animate-pulse" style="animation-duration: 12s;"></div>
+    <div class="fixed bottom-1/3 right-1/4 w-[400px] h-[400px] bg-applePurple/10 rounded-full blur-[140px] pointer-events-none -z-10 animate-pulse" style="animation-duration: 18s;"></div>
+
+    <!-- HEADER / HERO HEAD -->
+    <header class="flex justify-between items-center max-w-7xl mx-auto mb-12 glass-panel px-6 py-4">
+        <div class="flex items-center space-x-2.5 tracking-wider font-semibold text-sm">
+            <span class="text-appleBlue relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-appleBlue opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-appleBlue"></span>
+            </span>
+            <span class="text-customWhite font-bold uppercase tracking-widest text-xs">HIMANSHU KUMAR</span>
         </div>
         <div class="flex items-center space-x-4">
-            <a href="mailto:himanshu.kumar133@gmail.com" class="text-xs text-zinc-400 hover:text-accentGreen transition hidden sm:inline-block font-mono">himanshu.kumar133@gmail.com</a>
-            <div class="bg-charcoal border border-borderZinc text-[10px] text-zinc-400 font-mono tracking-wider uppercase px-3 py-1.5 rounded-full">
-                Platform Status: Active
+            <a href="mailto:himanshu.kumar133@gmail.com" class="text-xs text-zinc-400 hover:text-appleBlue transition hidden sm:inline-block font-mono">himanshu.kumar133@gmail.com</a>
+            <div class="bg-white/5 border border-white/10 text-[10px] text-zinc-300 font-mono tracking-wider uppercase px-3.5 py-1.5 rounded-full">
+                System Status: Operational
             </div>
         </div>
     </header>
 
     <main class="max-w-7xl mx-auto">
 
-        <!-- HERO SECTION (3-Column Layout optimized from image_f0dfa0.jpg) -->
-        <section class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center mb-16">
+        <!-- HERO SECTION (3-Column Layout from image_f0dfa0.jpg) -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-16">
             
-            <!-- Left Column: Primary Hook -->
+            <!-- Left Column: Primary Pitch -->
             <div class="lg:col-span-5 space-y-6">
-                <span class="text-xs uppercase tracking-widest text-emerald-500 font-mono block">Senior Platform Engineer</span>
+                <span class="text-xs uppercase tracking-widest text-appleBlue font-semibold font-mono block">Senior Platform Engineer</span>
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-none text-customWhite">
-                    A CLOUD <br><span class="font-bold text-accentGreen">INFRASTRUCTURE</span> EXPERT
+                    A CLOUD <br><span class="font-bold text-transparent bg-clip-text bg-gradient-to-r from-appleBlue to-applePurple">INFRASTRUCTURE</span> MASTER
                 </h1>
                 <p class="text-zinc-400 text-sm leading-relaxed max-w-md">
-                    Over 8 years of experience building cost-efficient, high-performance distributed systems on AWS and GCP, specializing in Kubernetes orchestration, autoscaling engineering, and modern infrastructure automation.
+                    Over 8 years of experience building cost-efficient, highly-available distributed systems on AWS and GCP, specializing in Kubernetes orchestration, autoscaling, and modern infrastructure automation.
                 </p>
                 <div class="flex flex-wrap gap-3 pt-2">
-                    <a href="mailto:himanshu.kumar133@gmail.com" class="inline-flex items-center space-x-3 bg-customWhite text-obsidian px-5 py-3 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-accentGreen hover:text-obsidian transition-all duration-300 transform hover:-translate-y-0.5">
-                        <span>Contact Me</span>
+                    <a href="mailto:himanshu.kumar133@gmail.com" class="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 text-customWhite border border-white/10 px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg hover:shadow-2xl transition-all duration-300 backdrop-blur-md">
+                        Contact Me
                     </a>
-                    <a href="https://www.linkedin.com/in/himanshu-kumar-57864196/" target="_blank" class="border border-borderZinc bg-charcoal hover:border-zinc-600 px-5 py-3 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 text-zinc-300 hover:text-customWhite">
+                    <a href="https://www.linkedin.com/in/himanshu-kumar-57864196/" target="_blank" class="inline-flex items-center justify-center border border-white/5 bg-transparent hover:bg-white/5 px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 text-zinc-300 hover:text-customWhite">
                         LinkedIn
                     </a>
                 </div>
             </div>
 
-            <!-- Center Column: Visual Graphic Frame with Live Canvas Simulation -->
+            <!-- Center Column: Elevated Liquid Glass Graphic Frame -->
             <div class="lg:col-span-4 flex justify-center">
-                <div class="arch-container w-full max-w-[300px] aspect-[4/5] bg-gradient-to-b from-zinc-900 to-charcoal border border-borderZinc overflow-hidden flex flex-col justify-end p-6 relative group">
+                <div class="liquid-capsule w-full max-w-[310px] aspect-[4/5] overflow-hidden flex flex-col justify-end p-5 relative group">
                     <!-- Interactive Simulation Canvas -->
                     <canvas id="clusterCanvas" class="absolute inset-0 w-full h-full block z-0"></canvas>
                     
                     <div class="absolute inset-x-0 top-6 text-center z-10 pointer-events-none">
-                        <span class="text-[9px] font-mono uppercase bg-obsidian/80 text-accentGreen px-2.5 py-1 rounded-full border border-borderZinc tracking-widest">
+                        <span class="text-[9px] font-mono uppercase bg-black/60 text-appleBlue px-3 py-1.5 rounded-full border border-white/10 tracking-widest backdrop-blur-md shadow-sm">
                             Live Node Simulation
                         </span>
                     </div>
 
-                    <!-- Interactive Trigger Controls Overlay -->
-                    <div class="z-10 text-center space-y-2 bg-obsidian/90 p-4 rounded-xl border border-borderZinc backdrop-blur-sm transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                    <!-- Floating Glass Dashboard Controls -->
+                    <div class="z-10 text-center space-y-3 bg-black/40 p-2 rounded-2xl border border-white/5 shadow-2xl backdrop-blur-xl transform translate-y-1 group-hover:translate-y-0 transition-all duration-300">
                         <div class="flex justify-around items-center">
-                            <button id="addPodBtn" class="text-[9px] font-mono text-accentGreen border border-accentGreen/30 hover:border-accentGreen px-2 py-1 rounded bg-accentGreen/10 transition-colors uppercase">
+                            <button id="addPodBtn" class="text-[10px] font-mono text-appleBlue border border-appleBlue/20 hover:border-appleBlue/60 px-3.5 py-1.5 rounded-full bg-appleBlue/5 hover:bg-appleBlue/10 transition-all uppercase font-semibold tracking-wider">
                                 + Pod
                             </button>
-                            <button id="chaosBtn" class="text-[9px] font-mono text-red-500 border border-red-500/30 hover:border-red-500 px-2 py-1 rounded bg-red-500/10 transition-colors uppercase">
+                            <button id="chaosBtn" class="text-[10px] font-mono text-appleRed border border-appleRed/20 hover:border-appleRed/60 px-3.5 py-1.5 rounded-full bg-appleRed/5 hover:bg-appleRed/10 transition-all uppercase font-semibold tracking-wider">
                                 Chaos
                             </button>
                         </div>
-                        <div>
+                        <div class="border-t border-white/5 pt-2">
                             <p class="text-[9px] uppercase tracking-widest text-zinc-500 font-mono">Current Location</p>
                             <p class="text-xs font-semibold text-customWhite font-mono">Dublin, Ireland</p>
                         </div>
@@ -121,63 +173,76 @@
                 </div>
             </div>
 
-            <!-- Right Column: Micro Metrics -->
-            <div class="lg:col-span-3 grid grid-cols-2 lg:grid-cols-1 gap-6 text-right">
-                <div class="p-4 bg-charcoal/50 border border-borderZinc rounded-lg">
-                    <h3 class="text-3xl font-light text-customWhite font-mono">8+</h3>
-                    <span class="text-[9px] block text-zinc-500 uppercase tracking-widest mt-1 font-mono">Years Experience</span>
+            <!-- Right Column: Micro Metrics in Frosted Glass -->
+            <div class="lg:col-span-3 grid grid-cols-2 lg:grid-cols-1 gap-4 text-right">
+                <div class="p-4 glass-panel">
+                    <h3 class="text-3xl font-light text-appleBlue font-mono">8+</h3>
+                    <span class="text-[9px] block text-zinc-400 uppercase tracking-widest mt-1 font-mono">Years Experience</span>
                 </div>
-                <div class="p-4 bg-charcoal/50 border border-borderZinc rounded-lg">
-                    <h3 class="text-3xl font-light text-customWhite font-mono">CKAD</h3>
-                    <span class="text-[9px] block text-zinc-500 uppercase tracking-widest mt-1 font-mono">Certified Kubernetes Application Developer</span>
+                <div class="p-4 glass-panel">
+                    <h3 class="text-3xl font-light text-applePurple font-mono">CKAD</h3>
+                    <span class="text-[9px] block text-zinc-400 uppercase tracking-widest mt-1 font-mono">Certified Kubernetes</span>
                 </div>
-                <div class="p-4 bg-charcoal/50 border border-borderZinc rounded-lg">
-                    <h3 class="text-3xl font-light text-customWhite font-mono">GCP</h3>
-                    <span class="text-[9px] block text-zinc-500 uppercase tracking-widest mt-1 font-mono">Associate Cloud Engineer</span>
+                <div class="p-4 glass-panel">
+                    <h3 class="text-3xl font-light text-appleGreen font-mono">GCP</h3>
+                    <span class="text-[9px] block text-zinc-400 uppercase tracking-widest mt-1 font-mono">Associate Cloud Eng</span>
                 </div>
             </div>
         </section>
 
-        <!-- TRUSTED BY LOGO GRID (Companies from Himanshu-Kumar-FlowCV.pdf) -->
+        <!-- TRUSTED BY LOGO GRID -->
         <section class="mb-10">
             <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-4">
-                <h3 class="text-[10px] font-bold uppercase tracking-widest text-zinc-500 font-mono">Professional History & Footprint</h3>
-                <p class="text-[10px] text-zinc-600 font-mono mt-1 md:mt-0">Orchestrating high availability systems across enterprise cloud landscapes</p>
+                <h3 class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 font-mono">Professional History & Footprint</h3>
+                <p class="text-[10px] text-zinc-500 font-mono mt-1 md:mt-0">Orchestrating high-availability systems across enterprise cloud landscapes</p>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-5 border border-borderZinc bg-charcoal rounded-sm text-center">
-                <div class="p-5 border-r border-b md:border-b-0 border-borderZinc text-zinc-400 font-medium text-xs tracking-widest uppercase hover:text-accentGreen transition-colors">Workday</div>
-                <div class="p-5 border-r border-b md:border-b-0 border-borderZinc text-zinc-400 font-medium text-xs tracking-widest uppercase hover:text-accentGreen transition-colors">Couchbase</div>
-                <div class="p-5 border-r border-b md:border-b-0 border-borderZinc text-zinc-400 font-medium text-xs tracking-widest uppercase hover:text-accentGreen transition-colors">Target India</div>
-                <div class="p-5 border-r border-borderZinc text-zinc-400 font-medium text-xs tracking-widest uppercase hover:text-accentGreen transition-colors">Lowe's India</div>
-                <div class="p-5 text-zinc-400 font-medium text-xs tracking-widest uppercase hover:text-accentGreen transition-colors">AppViewX</div>
-            </div>
-        </section>
-
-        <!-- CORE PILLARS / HIGHLIGHTED CAPABILITIES (Tightened Spacing) -->
-        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 border-t border-borderZinc pt-6">
-            <div class="space-y-1">
-                <h4 class="text-[10px] font-bold uppercase tracking-widest text-customWhite font-mono">Programming Languages</h4>
-                <p class="text-zinc-500 text-xs font-mono">Golang, Python</p>
-            </div>
-            <div class="space-y-1">
-                <h4 class="text-[10px] font-bold uppercase tracking-widest text-customWhite font-mono">Cloud Infrastructure</h4>
-                <p class="text-zinc-500 text-xs font-mono">AWS, GCP, Kubernetes, EKS, GKE</p>
-            </div>
-            <div class="space-y-1">
-                <h4 class="text-[10px] font-bold uppercase tracking-widest text-customWhite font-mono">Infrastructure as Code</h4>
-                <p class="text-zinc-500 text-xs font-mono">Terraform, ACK, Config Connector</p>
-            </div>
-            <div class="space-y-1">
-                <h4 class="text-[10px] font-bold uppercase tracking-widest text-customWhite font-mono">CI/CD & Observability</h4>
-                <p class="text-zinc-500 text-xs font-mono">Prometheus, Grafana, ArgoCD, GitOps</p>
+            <div class="grid grid-cols-2 md:grid-cols-5 glass-panel text-center overflow-hidden">
+                <div class="p-5 border-r border-b md:border-b-0 border-white/5 text-zinc-300 font-medium text-xs tracking-widest uppercase hover:text-appleBlue hover:bg-white/5 transition-all">Workday</div>
+                <div class="p-5 border-r border-b md:border-b-0 border-white/5 text-zinc-300 font-medium text-xs tracking-widest uppercase hover:text-appleBlue hover:bg-white/5 transition-all">Couchbase</div>
+                <div class="p-5 border-r border-b md:border-b-0 border-white/5 text-zinc-300 font-medium text-xs tracking-widest uppercase hover:text-appleBlue hover:bg-white/5 transition-all">Target India</div>
+                <div class="p-5 border-r border-white/5 text-zinc-300 font-medium text-xs tracking-widest uppercase hover:text-appleBlue hover:bg-white/5 transition-all">Lowe's India</div>
+                <div class="p-5 text-zinc-300 font-medium text-xs tracking-widest uppercase hover:text-appleBlue hover:bg-white/5 transition-all">AppViewX</div>
             </div>
         </section>
 
-        <!-- THE PROFILE PHILOSOPHY (Tightened transition) -->
-        <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 border-t border-borderZinc/50 pt-8">
+        <!-- CORE PILLARS / HIGHLIGHTED CAPABILITIES -->
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 border-t border-white/10 pt-6">
+            <div class="space-y-1.5">
+                <h4 class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 font-mono">Programming Languages</h4>
+                <div class="flex flex-wrap gap-1.5 mt-1">
+                    <span class="glass-chip px-2.5 py-1 text-[10px] font-mono text-appleBlue">Golang</span>
+                    <span class="glass-chip px-2.5 py-1 text-[10px] font-mono text-appleBlue">Python</span>
+                </div>
+            </div>
+            <div class="space-y-1.5">
+                <h4 class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 font-mono">Cloud Infrastructure</h4>
+                <div class="flex flex-wrap gap-1.5 mt-1">
+                    <span class="glass-chip px-2.5 py-1 text-[10px] font-mono text-appleGreen">AWS</span>
+                    <span class="glass-chip px-2.5 py-1 text-[10px] font-mono text-appleGreen">GCP</span>
+                    <span class="glass-chip px-2.5 py-1 text-[10px] font-mono text-appleGreen">Kubernetes</span>
+                </div>
+            </div>
+            <div class="space-y-1.5">
+                <h4 class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 font-mono">Infrastructure as Code</h4>
+                <div class="flex flex-wrap gap-1.5 mt-1">
+                    <span class="glass-chip px-2.5 py-1 text-[10px] font-mono text-customWhite">Terraform</span>
+                    <span class="glass-chip px-2.5 py-1 text-[10px] font-mono text-customWhite">AWS ACK</span>
+                </div>
+            </div>
+            <div class="space-y-1.5">
+                <h4 class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 font-mono">CI/CD & Observability</h4>
+                <div class="flex flex-wrap gap-1.5 mt-1">
+                    <span class="glass-chip px-2.5 py-1 text-[10px] font-mono text-applePurple">Prometheus</span>
+                    <span class="glass-chip px-2.5 py-1 text-[10px] font-mono text-applePurple">ArgoCD</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE PROFILE PHILOSOPHY -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 border-t border-white/5 pt-8">
             <div class="lg:col-span-5">
                 <h2 class="text-xl md:text-2xl font-light tracking-tight text-customWhite uppercase leading-snug">
-                    Architecting Cost-Efficient <br><span class="font-bold">Distributed Systems</span>
+                    Architecting Cost-Efficient <br><span class="font-bold text-transparent bg-clip-text bg-gradient-to-r from-appleBlue to-applePurple">Distributed Systems</span>
                 </h2>
             </div>
             <div class="lg:col-span-7 text-zinc-400 text-xs md:text-sm leading-relaxed">
@@ -187,35 +252,35 @@
             </div>
         </section>
 
-        <!-- COMPREHENSIVE SKILLS MATRIX SECTION (Tightened gap to improve page flow) -->
+        <!-- COMPREHENSIVE SKILLS MATRIX SECTION -->
         <section class="mb-16">
-            <div class="flex justify-between items-baseline mb-6 border-b border-borderZinc pb-3">
+            <div class="flex justify-between items-baseline mb-6 border-b border-white/10 pb-3">
                 <h3 class="text-xs font-bold uppercase tracking-widest text-customWhite font-mono">Technical Skills Matrix</h3>
-                <span class="text-[10px] text-zinc-500 font-mono">Expert Competency</span>
+                <span class="text-[10px] text-zinc-500 font-mono">Apple Glass Edition</span>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <div class="p-4 bg-charcoal border border-borderZinc rounded-md hover:border-zinc-700 transition">
-                    <p class="text-[9px] text-accentGreen uppercase font-mono tracking-wider mb-1.5">Languages & Core</p>
+                <div class="p-5 glass-panel">
+                    <p class="text-[9px] text-appleBlue uppercase font-mono tracking-wider mb-2 font-semibold">Languages & Core</p>
                     <p class="text-xs text-zinc-300 font-medium">Golang, Python</p>
                 </div>
-                <div class="p-4 bg-charcoal border border-borderZinc rounded-md hover:border-zinc-700 transition">
-                    <p class="text-[9px] text-accentGreen uppercase font-mono tracking-wider mb-1.5">Cloud Platforms</p>
+                <div class="p-5 glass-panel">
+                    <p class="text-[9px] text-appleBlue uppercase font-mono tracking-wider mb-2 font-semibold">Cloud Platforms</p>
                     <p class="text-xs text-zinc-300 font-medium">Google Cloud Platform (GCP), Amazon Web Services (AWS)</p>
                 </div>
-                <div class="p-4 bg-charcoal border border-borderZinc rounded-md hover:border-zinc-700 transition">
-                    <p class="text-[9px] text-accentGreen uppercase font-mono tracking-wider mb-1.5">Orchestration & Containers</p>
+                <div class="p-5 glass-panel">
+                    <p class="text-[9px] text-appleBlue uppercase font-mono tracking-wider mb-2 font-semibold">Orchestration & Containers</p>
                     <p class="text-xs text-zinc-300 font-medium">Kubernetes, Docker, EKS, GKE, Temporal</p>
                 </div>
-                <div class="p-4 bg-charcoal border border-borderZinc rounded-md hover:border-zinc-700 transition">
-                    <p class="text-[9px] text-accentGreen uppercase font-mono tracking-wider mb-1.5">Infrastructure as Code (IaC)</p>
+                <div class="p-5 glass-panel">
+                    <p class="text-[9px] text-appleBlue uppercase font-mono tracking-wider mb-2 font-semibold">Infrastructure as Code (IaC)</p>
                     <p class="text-xs text-zinc-300 font-medium">Terraform, AWS ACK, GCP Config Connector, Cuelang</p>
                 </div>
-                <div class="p-4 bg-charcoal border border-borderZinc rounded-md hover:border-zinc-700 transition">
-                    <p class="text-[9px] text-accentGreen uppercase font-mono tracking-wider mb-1.5">CI/CD & Release DevOps</p>
+                <div class="p-5 glass-panel">
+                    <p class="text-[9px] text-appleBlue uppercase font-mono tracking-wider mb-2 font-semibold">CI/CD & Release DevOps</p>
                     <p class="text-xs text-zinc-300 font-medium">Jenkins, ArgoCD, Spinnaker, GitOps, Release Orchestration</p>
                 </div>
-                <div class="p-4 bg-charcoal border border-borderZinc rounded-md hover:border-zinc-700 transition">
-                    <p class="text-[9px] text-accentGreen uppercase font-mono tracking-wider mb-1.5">Distributed Tooling & Mesh</p>
+                <div class="p-5 glass-panel">
+                    <p class="text-[9px] text-appleBlue uppercase font-mono tracking-wider mb-2 font-semibold">Distributed Tooling & Mesh</p>
                     <p class="text-xs text-zinc-300 font-medium">Prometheus, Grafana, Vault, Consul, Istio, EFK Stack</p>
                 </div>
             </div>
@@ -223,16 +288,16 @@
 
         <!-- FULL PROFESSIONAL EXPERIENCE TIMELINE -->
         <section class="mb-24">
-            <div class="flex justify-between items-baseline mb-10 border-b border-borderZinc pb-3">
+            <div class="flex justify-between items-baseline mb-10 border-b border-white/10 pb-3">
                 <h3 class="text-xs font-bold uppercase tracking-widest text-customWhite font-mono">Professional History</h3>
-                <span class="text-[10px] text-zinc-500 font-mono">Chronological Footprint</span>
+                <span class="text-[10px] text-zinc-500 font-mono">Chronological Timeline</span>
             </div>
 
-            <div class="space-y-12">
+            <div class="space-y-8">
                 <!-- Role 1: Workday -->
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 p-6 glass-panel">
                     <div class="lg:col-span-4 space-y-1">
-                        <span class="text-xs text-accentGreen font-mono font-medium">09/2022 – Present</span>
+                        <span class="text-xs text-appleBlue font-mono font-medium">09/2022 – Present</span>
                         <h4 class="text-base font-bold text-customWhite">Senior Software Engineer</h4>
                         <p class="text-xs text-zinc-500 uppercase tracking-wider font-mono">Workday | Dublin, Ireland</p>
                     </div>
@@ -248,9 +313,9 @@
                 </div>
 
                 <!-- Role 2: Couchbase -->
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 pt-6 border-t border-borderZinc">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 p-6 glass-panel">
                     <div class="lg:col-span-4 space-y-1">
-                        <span class="text-xs text-accentGreen font-mono font-medium">05/2021 – 09/2022</span>
+                        <span class="text-xs text-appleBlue font-mono font-medium">05/2021 – 09/2022</span>
                         <h4 class="text-base font-bold text-customWhite">Senior Software Engineer</h4>
                         <p class="text-xs text-zinc-500 uppercase tracking-wider font-mono">Couchbase | Bengaluru, India</p>
                     </div>
@@ -267,9 +332,9 @@
                 </div>
 
                 <!-- Role 3: Target India -->
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 pt-6 border-t border-borderZinc">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 p-6 glass-panel">
                     <div class="lg:col-span-4 space-y-1">
-                        <span class="text-xs text-accentGreen font-mono font-medium">01/2020 – 06/2021</span>
+                        <span class="text-xs text-appleBlue font-mono font-medium">01/2020 – 06/2021</span>
                         <h4 class="text-base font-bold text-customWhite">Software Engineer</h4>
                         <p class="text-xs text-zinc-500 uppercase tracking-wider font-mono">Target India | Bengaluru, India</p>
                     </div>
@@ -285,9 +350,9 @@
                 </div>
 
                 <!-- Role 4: Lowe's India -->
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 pt-6 border-t border-borderZinc">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 p-6 glass-panel">
                     <div class="lg:col-span-4 space-y-1">
-                        <span class="text-xs text-accentGreen font-mono font-medium">06/2017 – 01/2020</span>
+                        <span class="text-xs text-appleBlue font-mono font-medium">06/2017 – 01/2020</span>
                         <h4 class="text-base font-bold text-customWhite">Software Engineer</h4>
                         <p class="text-xs text-zinc-500 uppercase tracking-wider font-mono">Lowe's India | Bengaluru, India</p>
                     </div>
@@ -302,9 +367,9 @@
                 </div>
 
                 <!-- Role 5: AppViewX -->
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 pt-6 border-t border-borderZinc">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 p-6 glass-panel">
                     <div class="lg:col-span-4 space-y-1">
-                        <span class="text-xs text-accentGreen font-mono font-medium">01/2017 – 06/2017</span>
+                        <span class="text-xs text-appleBlue font-mono font-medium">01/2017 – 06/2017</span>
                         <h4 class="text-base font-bold text-customWhite">Software Engineer</h4>
                         <p class="text-xs text-zinc-500 uppercase tracking-wider font-mono">AppViewX | Coimbatore, India</p>
                     </div>
@@ -321,60 +386,60 @@
 
         <!-- TECHNICAL PROJECTS BLOCK -->
         <section class="mb-24">
-            <div class="flex justify-between items-baseline mb-10 border-b border-borderZinc pb-3">
+            <div class="flex justify-between items-baseline mb-10 border-b border-white/10 pb-3">
                 <h3 class="text-xs font-bold uppercase tracking-widest text-customWhite font-mono">Engineering Sub-Systems</h3>
                 <span class="text-[10px] text-zinc-500 font-mono font-medium">Personal & Freelance Projects</span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Project 1 -->
-                <div class="p-6 bg-charcoal border border-borderZinc rounded-sm group hover:border-zinc-700 transition">
+                <div class="p-6 glass-panel group">
                     <div class="flex flex-wrap gap-2 mb-3">
-                        <span class="bg-zinc-800 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-sm uppercase">Django</span>
-                        <span class="bg-zinc-800 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-sm uppercase">Python</span>
-                        <span class="bg-zinc-800 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-sm uppercase">RabbitMQ</span>
-                        <span class="bg-zinc-800 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-sm uppercase">MongoDB</span>
+                        <span class="bg-white/5 text-appleBlue font-mono text-[9px] px-2.5 py-1 rounded-md uppercase border border-white/5">Django</span>
+                        <span class="bg-white/5 text-appleBlue font-mono text-[9px] px-2.5 py-1 rounded-md uppercase border border-white/5">Python</span>
+                        <span class="bg-white/5 text-appleBlue font-mono text-[9px] px-2.5 py-1 rounded-md uppercase border border-white/5">RabbitMQ</span>
+                        <span class="bg-white/5 text-appleBlue font-mono text-[9px] px-2.5 py-1 rounded-md uppercase border border-white/5">MongoDB</span>
                     </div>
-                    <h4 class="text-lg font-bold text-customWhite mb-1 group-hover:text-accentGreen transition-colors">Status Checker Tool</h4>
+                    <h4 class="text-lg font-bold text-customWhite mb-1 group-hover:text-appleBlue transition-colors">Status Checker Tool</h4>
                     <p class="text-zinc-400 text-xs leading-relaxed">
                         Designed an independent platform health verification utility utilizing custom configuration timeout and frequency parameters. Employs a decoupled message dispatcher model to continuously paint state tracking layouts via live streaming workbooks.
                     </p>
                 </div>
 
                 <!-- Project 2 -->
-                <div class="p-6 bg-charcoal border border-borderZinc rounded-sm group hover:border-zinc-700 transition">
+                <div class="p-6 glass-panel group">
                     <div class="flex flex-wrap gap-2 mb-3">
-                        <span class="bg-zinc-800 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-sm uppercase">Vue JS</span>
-                        <span class="bg-zinc-800 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-sm uppercase">Python</span>
-                        <span class="bg-zinc-800 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-sm uppercase">Flask</span>
-                        <span class="bg-zinc-800 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-sm uppercase">Java</span>
+                        <span class="bg-white/5 text-appleBlue font-mono text-[9px] px-2.5 py-1 rounded-md uppercase border border-white/5">Vue JS</span>
+                        <span class="bg-white/5 text-appleBlue font-mono text-[9px] px-2.5 py-1 rounded-md uppercase border border-white/5">Python</span>
+                        <span class="bg-white/5 text-appleBlue font-mono text-[9px] px-2.5 py-1 rounded-md uppercase border border-white/5">Flask</span>
+                        <span class="bg-white/5 text-appleBlue font-mono text-[9px] px-2.5 py-1 rounded-md uppercase border border-white/5">Java</span>
                     </div>
-                    <h4 class="text-lg font-bold text-customWhite mb-1 group-hover:text-accentGreen transition-colors">Service Virtualization Tool</h4>
+                    <h4 class="text-lg font-bold text-customWhite mb-1 group-hover:text-appleBlue transition-colors">Service Virtualization Tool</h4>
                     <p class="text-zinc-400 text-xs leading-relaxed">
                         Directed front-end architectural UI mappings. Designed an interactive abstraction layer mapping structural handshakes to deep runtime instances executing native Docker virtualization configs and highly tailored Wiremock behavior routines.
                     </p>
                 </div>
 
                 <!-- Project 3 -->
-                <div class="p-6 bg-charcoal border border-borderZinc rounded-sm group hover:border-zinc-700 transition">
+                <div class="p-6 glass-panel group">
                     <div class="flex flex-wrap gap-2 mb-3">
-                        <span class="bg-zinc-800 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-sm uppercase">Express JS</span>
-                        <span class="bg-zinc-800 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-sm uppercase">Angular JS</span>
-                        <span class="bg-zinc-800 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-sm uppercase">Firehose</span>
+                        <span class="bg-white/5 text-appleBlue font-mono text-[9px] px-2.5 py-1 rounded-md uppercase border border-white/5">Express JS</span>
+                        <span class="bg-white/5 text-appleBlue font-mono text-[9px] px-2.5 py-1 rounded-md uppercase border border-white/5">Angular JS</span>
+                        <span class="bg-white/5 text-appleBlue font-mono text-[9px] px-2.5 py-1 rounded-md uppercase border border-white/5">Firehose</span>
                     </div>
-                    <h4 class="text-lg font-bold text-customWhite mb-1 group-hover:text-accentGreen transition-colors">Physioheals Platform</h4>
+                    <h4 class="text-lg font-bold text-customWhite mb-1 group-hover:text-appleBlue transition-colors">Physioheals Platform</h4>
                     <p class="text-zinc-400 text-xs leading-relaxed">
                         Engineered a modular discussion environment pairing authenticated resource sharing with complex administrator streaming control pipelines, allowing straightforward publishing and lifecycle organization across dynamic content formats.
                     </p>
                 </div>
 
                 <!-- Project 4 -->
-                <div class="p-6 bg-charcoal border border-borderZinc rounded-sm group hover:border-zinc-700 transition">
+                <div class="p-6 glass-panel group">
                     <div class="flex flex-wrap gap-2 mb-3">
-                        <span class="bg-zinc-800 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-sm uppercase">Python</span>
-                        <span class="bg-zinc-800 text-zinc-400 font-mono text-[9px] px-2 py-0.5 rounded-sm uppercase">Angular JS</span>
+                        <span class="bg-white/5 text-appleBlue font-mono text-[9px] px-2.5 py-1 rounded-md uppercase border border-white/5">Python</span>
+                        <span class="bg-white/5 text-appleBlue font-mono text-[9px] px-2.5 py-1 rounded-md uppercase border border-white/5">Angular JS</span>
                     </div>
-                    <h4 class="text-lg font-bold text-customWhite mb-1 group-hover:text-accentGreen transition-colors">Server Manager</h4>
+                    <h4 class="text-lg font-bold text-customWhite mb-1 group-hover:text-appleBlue transition-colors">Server Manager</h4>
                     <p class="text-zinc-400 text-xs leading-relaxed">
                         Co-engineered a browser-accessible environment handling core host operations, enabling rapid directory adjustments, file I/O operations, and tracking routines across supported native asset types.
                     </p>
@@ -383,29 +448,29 @@
         </section>
 
         <!-- EDUCATION & CREDENTIALS ROW -->
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20 border-t border-borderZinc pt-10">
-            <div>
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20 border-t border-white/10 pt-10">
+            <div class="p-6 glass-panel">
                 <h3 class="text-xs font-bold uppercase tracking-widest text-customWhite mb-6 font-mono">Education</h3>
                 <div class="space-y-1">
-                    <span class="text-xs text-accentGreen font-mono">07/2013 – 07/2017</span>
+                    <span class="text-xs text-appleBlue font-mono">07/2013 – 07/2017</span>
                     <h4 class="text-base font-bold text-customWhite">Bachelor in Technology</h4>
                     <p class="text-xs text-zinc-400">SRM University | Chennai, India</p>
                     <p class="text-xs text-zinc-500 font-mono mt-1">Cumulative CGPA: 8.7</p>
                 </div>
             </div>
-            <div>
+            <div class="p-6 glass-panel">
                 <h3 class="text-xs font-bold uppercase tracking-widest text-customWhite mb-6 font-mono">Industry Certifications</h3>
                 <div class="space-y-4">
                     <div>
-                        <a href="https://www.credly.com/badges/eb0442b7-1848-4be7-8d40-ffe291b575d7/public_url" target="_blank" class="hover:text-accentGreen transition-colors">
-                            <span class="text-xs text-accentGreen font-mono block">2022</span>
+                        <a href="https://www.credly.com/badges/eb0442b7-1848-4be7-8d40-ffe291b575d7/public_url" target="_blank" class="hover:text-appleBlue transition-colors">
+                            <span class="text-xs text-appleBlue font-mono block">2022</span>
                             <h4 class="text-sm font-bold text-customWhite">CKAD - Certified Kubernetes Application Developer</h4>
                             <p class="text-xs text-zinc-500 font-mono">Cloud Native Computing Foundation (CNCF)</p>
                         </a>
                     </div>
                     <div>
-                        <a href="https://www.credly.com/badges/0afbcf47-d903-422a-bd70-590e41a6eb78/public_url" target="_blank" class="hover:text-accentGreen transition-colors">
-                            <span class="text-xs text-accentGreen font-mono block">2020</span>
+                        <a href="https://www.credly.com/badges/0afbcf47-d903-422a-bd70-590e41a6eb78/public_url" target="_blank" class="hover:text-appleBlue transition-colors">
+                            <span class="text-xs text-appleBlue font-mono block">2020</span>
                             <h4 class="text-sm font-bold text-customWhite">Google Cloud Associate Cloud Engineer</h4>
                             <p class="text-xs text-zinc-500 font-mono">Google Credential</p>
                         </a>
@@ -417,11 +482,11 @@
     </main>
 
     <!-- FOOTER SIGNATURE -->
-    <footer class="max-w-7xl mx-auto border-t border-borderZinc pt-8 mt-16 flex flex-col sm:flex-row justify-between items-center text-xs text-zinc-600 gap-4">
-        <div class="font-mono">&copy; 2026 Himanshu Kumar | Designed with extreme efficiency.</div>
+    <footer class="max-w-7xl mx-auto border-t border-white/10 pt-8 mt-16 flex flex-col sm:flex-row justify-between items-center text-xs text-zinc-500 gap-4">
+        <div class="font-mono">&copy; 2026 Himanshu Kumar | Apple Liquid Glass Blueprint.</div>
         <div class="flex space-x-6 font-mono">
-            <a href="https://www.linkedin.com/in/himanshu-kumar-57864196/" target="_blank" class="hover:text-accentGreen transition-colors">LinkedIn</a>
-            <a href="https://github.com/sudohikumar" target="_blank" class="hover:text-accentGreen transition-colors">GitHub</a>
+            <a href="https://www.linkedin.com/in/himanshu-kumar-57864196/" target="_blank" class="hover:text-appleBlue transition-colors">LinkedIn</a>
+            <a href="https://github.com/sudohikumar" target="_blank" class="hover:text-appleBlue transition-colors">GitHub</a>
         </div>
     </footer>
 
@@ -434,7 +499,7 @@
         let simulationSpeed = 1;
         let scaleFactor = 1;
 
-        // Synchronize Canvas coordinates on initialization & window scaling
+        // Sync Canvas space on scale changes
         function resizeCanvas() {
             const rect = canvas.parentNode.getBoundingClientRect();
             canvas.width = rect.width;
@@ -444,7 +509,7 @@
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
-        // Node / Pod Template
+        // Node / Pod Class following Apple's High-Gloss/Specularity aesthetics
         class Pod {
             constructor(x, y, label, isLB = false) {
                 this.x = x;
@@ -452,61 +517,105 @@
                 this.originalY = y;
                 this.label = label;
                 this.isLB = isLB;
-                this.radius = isLB ? 18 : 12;
+                this.radius = isLB ? 20 : 13;
                 this.health = 100;
                 this.pulse = 0;
             }
 
             draw() {
-                this.pulse += 0.05;
-                ctx.beginPath();
+                this.pulse += 0.04;
+                ctx.save();
                 
-                // Outer breathing node glow ring
-                let glowRad = this.radius + Math.sin(this.pulse) * 4;
+                // Draw a beautiful soft shadow below the glass bubble
+                ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
+                ctx.shadowBlur = 10;
+                ctx.shadowOffsetY = 4;
+
+                // Subtle fluid glass glowing aura
+                ctx.beginPath();
+                let glowRad = this.radius + Math.sin(this.pulse) * 3;
                 ctx.arc(this.x, this.y, glowRad, 0, Math.PI * 2);
                 
                 if (this.health < 50) {
-                    ctx.strokeStyle = 'rgba(239, 68, 68, 0.25)';
-                    ctx.fillStyle = 'rgba(239, 68, 68, 0.08)';
+                    ctx.strokeStyle = 'rgba(255, 69, 58, 0.2)'; // Liquid Red
+                    ctx.fillStyle = 'rgba(255, 69, 58, 0.05)';
                 } else {
-                    ctx.strokeStyle = this.isLB ? 'rgba(16, 185, 129, 0.25)' : 'rgba(16, 185, 129, 0.15)';
-                    ctx.fillStyle = this.isLB ? 'rgba(16, 185, 129, 0.05)' : 'rgba(16, 185, 129, 0.02)';
+                    ctx.strokeStyle = this.isLB ? 'rgba(41, 151, 255, 0.25)' : 'rgba(48, 209, 88, 0.15)'; // Liquid Blue/Green
+                    ctx.fillStyle = this.isLB ? 'rgba(41, 151, 255, 0.05)' : 'rgba(48, 209, 88, 0.02)';
                 }
                 ctx.fill();
                 ctx.stroke();
 
-                // Core Node Fill
+                // Draw the glossy liquid glass core
+                let radialGrad = ctx.createRadialGradient(
+                    this.x - this.radius * 0.3, 
+                    this.y - this.radius * 0.3, 
+                    this.radius * 0.1, 
+                    this.x, 
+                    this.y, 
+                    this.radius
+                );
+
+                if (this.health < 50) {
+                    radialGrad.addColorStop(0, '#ff9f0a'); // Warm specular highlights
+                    radialGrad.addColorStop(0.4, '#ff453a'); // Base color
+                    radialGrad.addColorStop(1, '#8b0000'); // Deep shadowed border
+                } else {
+                    if (this.isLB) {
+                        radialGrad.addColorStop(0, '#82c0ff'); 
+                        radialGrad.addColorStop(0.4, '#2997ff'); 
+                        radialGrad.addColorStop(1, '#004080'); 
+                    } else {
+                        radialGrad.addColorStop(0, '#9bf6b4'); 
+                        radialGrad.addColorStop(0.4, '#30d158'); 
+                        radialGrad.addColorStop(1, '#0e6227'); 
+                    }
+                }
+
+                ctx.shadowColor = 'transparent'; // Reset outer shadow for core
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                if (this.health < 50) {
-                    ctx.fillStyle = '#ef4444'; // Alarm Node State
-                } else {
-                    ctx.fillStyle = this.isLB ? '#047857' : '#10b981';
-                }
+                ctx.fillStyle = radialGrad;
                 ctx.fill();
 
-                // Node identifier text overlay
-                ctx.fillStyle = '#ffffff';
+                // Draw specular reflection "glare" (liquid glass reflection)
+                ctx.beginPath();
+                ctx.ellipse(
+                    this.x - this.radius * 0.3, 
+                    this.y - this.radius * 0.3, 
+                    this.radius * 0.35, 
+                    this.radius * 0.2, 
+                    -Math.PI / 4, 
+                    0, 
+                    Math.PI * 2
+                );
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.55)';
+                ctx.fill();
+
+                ctx.restore();
+
+                // Node text tag
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
                 ctx.font = '7px monospace';
                 ctx.textAlign = 'center';
                 ctx.fillText(this.label, this.x, this.y + (this.radius + 12));
             }
 
             update() {
-                // Gentle floating suspension simulation
+                // Liquid floating offset animation
                 if (!this.isLB) {
                     this.y = this.originalY + Math.sin(this.pulse) * 2;
                 }
             }
         }
 
-        // Data / Traffic Packet Template
+        // Network Data Packet Class (Translucent flowing droplets)
         class Packet {
             constructor(startX, startY, targetPod) {
                 this.x = startX;
                 this.y = startY;
                 this.target = targetPod;
-                this.speed = 1.8 + Math.random() * 1.5;
+                this.speed = 1.5 + Math.random() * 1.2;
                 this.complete = false;
             }
 
@@ -517,7 +626,6 @@
 
                 if (dist < 4) {
                     this.complete = true;
-                    // Trigger pod pulse on structural traffic strike
                     this.target.pulse = 1;
                 } else {
                     this.x += (dx / dist) * this.speed * simulationSpeed;
@@ -526,17 +634,24 @@
             }
 
             draw() {
+                ctx.save();
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
-                ctx.fillStyle = '#34d399';
-                ctx.shadowBlur = 4;
-                ctx.shadowColor = '#10b981';
+                ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+                
+                // Glossy gradient for small droplets
+                let dropletGrad = ctx.createRadialGradient(this.x - 1, this.y - 1, 0.5, this.x, this.y, 3);
+                dropletGrad.addColorStop(0, '#ffffff');
+                dropletGrad.addColorStop(1, '#2997ff'); // Ice-blue liquid droplet
+
+                ctx.shadowColor = '#2997ff';
+                ctx.shadowBlur = 6;
+                ctx.fillStyle = dropletGrad;
                 ctx.fill();
-                ctx.shadowBlur = 0; // Reset canvas shadows
+                ctx.restore();
             }
         }
 
-        // Initial Grid Assembly Mapping
+        // Initialize Cluster Nodes
         function initCluster() {
             pods = [];
             packets = [];
@@ -544,7 +659,7 @@
             // Core Load Balancer
             pods.push(new Pod(canvas.width / 2, 50, 'Load Balancer', true));
             
-            // Standard target worker application pods
+            // Default worker nodes
             let podCount = 3;
             for (let i = 0; i < podCount; i++) {
                 let spacing = canvas.width / (podCount + 1);
@@ -552,66 +667,70 @@
             }
         }
 
-        // Action Loop Executor
         function updateSimulation() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             let lb = pods[0];
-            
-            // Query ready / healthy workers (health >= 50%)
             let healthyPods = pods.slice(1).filter(pod => pod.health >= 50);
             let totalOutage = (pods.length > 1 && healthyPods.length === 0);
 
-            // Draw structural architecture network backbones with real-time health evaluations
+            // Connect lines between load balancer and nodes (glass waveguides)
             pods.forEach((pod, idx) => {
-                if (idx === 0) return; // Skip LB self-connection
+                if (idx === 0) return;
                 
+                ctx.save();
                 ctx.beginPath();
                 ctx.moveTo(lb.x, lb.y);
                 ctx.lineTo(pod.x, pod.y);
                 
                 if (pod.health < 50) {
-                    // Failed state - Red dashed connection line
-                    ctx.strokeStyle = 'rgba(239, 68, 68, 0.35)';
+                    ctx.strokeStyle = 'rgba(255, 69, 58, 0.35)'; // Segment broken warnings
                     ctx.setLineDash([4, 4]);
+                    ctx.lineWidth = 1;
                 } else {
-                    // Operational state - Soft solid green line
-                    ctx.strokeStyle = 'rgba(16, 185, 129, 0.15)';
+                    // Glass piping waveguide style
+                    ctx.strokeStyle = 'rgba(255, 255, 255, 0.07)';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                    ctx.strokeStyle = 'rgba(48, 209, 88, 0.15)'; // Overlay green flow indicator
+                    ctx.lineWidth = 1;
                     ctx.setLineDash([]);
                 }
                 ctx.stroke();
+                ctx.restore();
             });
-            ctx.setLineDash([]); // Reset line dash style for upcoming frames
 
-            // Render and update individual node states
+            // Draw individual pods
             pods.forEach(pod => {
                 pod.update();
                 pod.draw();
             });
 
-            // Handle active traffic execution pipelines
+            // Handle packet distributions with circuit-breaker protection
             if (!totalOutage) {
-                // Only dispatch packets to healthy, ready endpoints (Envoy/Kubernetes routing match)
                 if (Math.random() < 0.05 && healthyPods.length > 0) {
                     let targetPod = healthyPods[Math.floor(Math.random() * healthyPods.length)];
                     packets.push(new Packet(lb.x, lb.y, targetPod));
                 }
             } else {
-                // Draw floating alerts if all nodes are compromised (Outage State)
-                ctx.fillStyle = 'rgba(239, 68, 68, 0.9)';
-                ctx.font = '8px monospace';
+                // Outage / System Failure Intercept (Circuit Breaker active)
+                ctx.save();
+                ctx.fillStyle = 'rgba(255, 69, 58, 0.9)';
+                ctx.font = 'bold 8px SF Pro Display, monospace';
                 ctx.textAlign = 'center';
-                ctx.fillText('CRITICAL: ALL ENDPOINTS DOWN', canvas.width / 2, canvas.height / 2 - 10);
-                ctx.fillStyle = 'rgba(239, 68, 68, 0.5)';
-                ctx.fillText('CIRCUIT BREAKER ACTIVE', canvas.width / 2, canvas.height / 2 + 2);
+                ctx.fillText('CRITICAL: SERVICE BROKEN', canvas.width / 2, canvas.height / 2 - 10);
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+                ctx.font = '7px SF Pro Display, monospace';
+                ctx.fillText('CIRCUIT BREAKER: REDIRECT HALTED', canvas.width / 2, canvas.height / 2 + 2);
+                ctx.restore();
             }
 
-            // Update running packets
+            // Route flowing packets
             packets.forEach((packet, idx) => {
                 packet.update();
                 packet.draw();
                 
-                // If a packet's target pod becomes unhealthy in flight, drop it (Simulating 503 Bad Gateway)
+                // If a target node crashes mid-flight, drop the request path (503 circuit-breaker)
                 if (packet.target.health < 50) {
                     packet.complete = true;
                 }
@@ -621,17 +740,17 @@
                 }
             });
 
-            // Self-Healing orchestration loop (FinOps/KRM auto-recovery)
+            // Self-healing algorithm (HPA replica controller simulator)
             pods.forEach(pod => {
                 if (pod.health < 100) {
-                    pod.health += 0.3; // Self-healing recovery over time
+                    pod.health += 0.35; // Auto recovery rate
                 }
             });
 
             requestAnimationFrame(updateSimulation);
         }
 
-        // Add Pod Command Execution
+        // Add Pod Trigger
         document.getElementById('addPodBtn').addEventListener('click', (e) => {
             e.stopPropagation();
             if (pods.length < 6) {
@@ -641,7 +760,7 @@
                 
                 pods.push(new Pod(newX, targetY, `Pod-Auto-${newIndex}`));
                 
-                // Recalculate horizontal positioning layouts cleanly
+                // Refactor positions cleanly across layout coordinates
                 let podCount = pods.length - 1;
                 for (let i = 1; i < pods.length; i++) {
                     let spacing = canvas.width / (podCount + 1);
@@ -651,16 +770,16 @@
             }
         });
 
-        // Trigger Chaos Monkey System Disruptions
+        // Trigger Chaos Disruptions (Chaos Monkey emulator)
         document.getElementById('chaosBtn').addEventListener('click', (e) => {
             e.stopPropagation();
             if (pods.length > 1) {
                 let targetIdx = 1 + Math.floor(Math.random() * (pods.length - 1));
-                pods[targetIdx].health = 10; // Instantly compromise target server instance health metrics
+                pods[targetIdx].health = 10; // Instantly compromise target server instance
             }
         });
 
-        // Bootstrap engine once elements load inside viewport
+        // Launch simulation engine
         window.onload = function() {
             initCluster();
             updateSimulation();
